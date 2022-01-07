@@ -28,3 +28,8 @@ values ('Julekha', 600000.0, '2021-05-10');
 
 ----- UC4 -----
 select * from employee_payroll;
+
+----- UC5 -----
+select * from employee_payroll where name = 'Shubham';
+select * from employee_payroll 
+where startDate between '2021-04-10' and Date(now());
