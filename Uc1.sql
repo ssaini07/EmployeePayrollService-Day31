@@ -40,3 +40,8 @@ alter table employee_payroll add gender char(1);
 update employee_payroll set gender  = 'M' where id;
 update employee_payroll set gender = 'F' where id=3;
 update employee_payroll set gender = 'F' where id=4;
+
+----- UC7 -----
+select sum(salary) from employee_payroll;
+select gender, sum(salary) from employee_payroll group by gender;
+
