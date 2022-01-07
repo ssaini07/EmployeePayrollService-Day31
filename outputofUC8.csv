@@ -1,0 +1,5 @@
+id,name,salary,startDate,gender,phone_number,department,address
+1,Shubham,900000,2021-04-10,M,NULL,,ABC
+2,Durgesh,700000,2021-09-10,M,NULL,,ABC
+3,Rohini,800000,2021-02-10,F,NULL,,ABC
+4,Julekha,600000,2021-05-10,F,NULL,,ABC

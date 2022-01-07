@@ -45,3 +45,11 @@ update employee_payroll set gender = 'F' where id=4;
 select sum(salary) from employee_payroll;
 select gender, sum(salary) from employee_payroll group by gender;
 
+----- Uc8 -----
+alter table employee_payroll 
+add phone_number varchar(30),
+add department varchar(30) not null;
+alter table employee_payroll
+add address varchar(250) default 'ABC';
+select * from employee_payroll;
+
