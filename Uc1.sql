@@ -63,4 +63,14 @@ add taxable_pay int,
 add income_tax int,
 add net_pay int;
 
-select * from employee_payroll 
+select * from employee_payroll; 
+
+----- UC10 ------
+insert into employee_payroll
+(name, basic_pay, startDate, department)
+values ('Terrisa', 500000.0, '2021-01-10', 'Sales');
+insert into employee_payroll
+(name, basic_pay, startDate, gender, phone_number, department, deductions, taxable_pay, income_tax, net_pay)
+values ('Terrisa', 500000.0, '2021-01-10', 'F', '456765', 'Marketing', 30000, 400, 756, 857);
+select * from employee_payroll; 
+
