@@ -53,3 +53,14 @@ alter table employee_payroll
 add address varchar(250) default 'ABC';
 select * from employee_payroll;
 
+----- UC9 -----
+alter table employee_payroll 
+rename column salary to basic_pay;
+
+alter table employee_payroll 
+add deductions int, 
+add taxable_pay int,
+add income_tax int,
+add net_pay int;
+
+select * from employee_payroll 
