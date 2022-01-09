@@ -1,7 +1,0 @@
-id,name,basic_pay,startDate,gender,phone_number,department,address,deductions,taxable_pay,income_tax,net_pay
-1,Shubham,900000,2021-04-10,M,NULL,,ABC,NULL,NULL,NULL,NULL
-2,Durgesh,700000,2021-09-10,M,NULL,,ABC,NULL,NULL,NULL,NULL
-3,Rohini,800000,2021-02-10,F,NULL,,ABC,NULL,NULL,NULL,NULL
-4,Julekha,600000,2021-05-10,F,NULL,,ABC,NULL,NULL,NULL,NULL
-5,Terrisa,500000,2021-01-10,NULL,NULL,Sales,ABC,NULL,NULL,NULL,NULL
-6,Terrisa,500000,2021-01-10,F,456765,Marketing,ABC,30000,400,756,857

@@ -74,3 +74,42 @@ insert into employee_payroll
 values ('Terrisa', 500000.0, '2021-01-10', 'F', '456765', 'Marketing', 30000, 400, 756, 857);
 select * from employee_payroll; 
 
+------ UC11 ------
+create table employee (
+id int not null auto_increment  primary key ,
+name varchar(50) not null, 
+gender varchar (1),
+phone varchar (30),
+address varchar(300),
+startDate Date not null
+);
+
+select * from employee;
+-- Here we need to payroll table, while creating payroll table we need to manage one to one relation, so we will create one foreign key in this payroll ---
+create table payroll (
+id int not null auto_increment  primary key ,
+basic_pay int,
+deuctions int,
+income_tax int,
+taxable_pay int, 
+net_pay int ,
+emp_id int ,
+foreign key(emp_id) references employee (id)
+);
+
+ create table department (
+ id int not null auto_increment primary key,
+ dept_name varchar (20) not null
+ );
+ 
+ create table employee_department(  
+ employee_id int  not null,
+ department_id  int not null,
+ foreign key(employee_id) references employee (id),
+ foreign key (department_id) references department(id),
+ primary key(employee_id,department_id)
+ );
+select * from employee_department;
+desc employee_department;
+
+
