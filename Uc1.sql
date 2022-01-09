@@ -112,4 +112,23 @@ foreign key(emp_id) references employee (id)
 select * from employee_department;
 desc employee_department;
 
+----- UC12 -----
+select * from employee;
+select * from payroll;
+select * from department;
+select * from employee_department;
 
+insert into employee (name, gender, phone, address, startDate, Salary)
+values ('Shubham', 'M', 6465757686, 'Colony No:4, Ambala', '2021-03-10', 500000.0);
+insert into employee (name, gender, phone, address, startDate, Salary)
+values ('Durgesh', 'M', 968584746, 'Colony No:11, Nashik', '2021-03-12', 700000.0);
+insert into employee (name, gender, phone, address, startDate, Salary)
+values ('Julekha', 'F', 854635356, 'Colony No:20, Pune', '2021-04-22', 900000.0);
+
+select * from employee where name = 'Shubham';
+select * from employee 
+where startDate between '2021-03-10' and Date(now());
+
+ALTER TABLE employee ADD Salary varchar(50);
+select sum(salary) from employee;
+select gender, sum(salary) from employee group by gender;
