@@ -75,60 +75,80 @@ values ('Terrisa', 500000.0, '2021-01-10', 'F', '456765', 'Marketing', 30000, 40
 select * from employee_payroll; 
 
 ------ UC11 ------
-create table employee (
-id int not null auto_increment  primary key ,
-name varchar(50) not null, 
-gender varchar (1),
-phone varchar (30),
-address varchar(300),
+create table employee(
+id int not null auto_increment primary key,
+name varchar(50) not null,
+gender varchar(1),
+phone_number varchar(13),
+address varchar(200),
 startDate Date not null
 );
-
-select * from employee;
--- Here we need to payroll table, while creating payroll table we need to manage one to one relation, so we will create one foreign key in this payroll ---
-create table payroll (
-id int not null auto_increment  primary key ,
-basic_pay int,
-deuctions int,
-income_tax int,
-taxable_pay int, 
-net_pay int ,
-emp_id int ,
-foreign key(emp_id) references employee (id)
+desc employee;
+create table payroll(
+id int not null auto_increment primary key,
+basic_pay double,
+deductions double,
+income_tax double,
+taxable_pay double,
+tax double,
+net_pay double,
+emp_ID int,
+foreign key(emp_ID) references employee(id)
 );
-
- create table department (
- id int not null auto_increment primary key,
- dept_name varchar (20) not null
- );
- 
- create table employee_department(  
- employee_id int  not null,
- department_id  int not null,
- foreign key(employee_id) references employee (id),
- foreign key (department_id) references department(id),
- primary key(employee_id,department_id)
- );
-select * from employee_department;
+desc payroll;
+create table department(
+  id int not null auto_increment primary key,
+  dept_name varchar(20) not null
+  );
+desc department;
+create table employee_department(
+  employee_id int not null,
+  department_id int not null,
+  foreign key(employee_id) references employee(id),
+  foreign key(department_id) references department(id),
+  primary key(employee_id,department_id)
+);
 desc employee_department;
 
------ UC12 -----
+---- UC12 ----
 select * from employee;
 select * from payroll;
 select * from department;
 select * from employee_department;
+show tables;
 
-insert into employee (name, gender, phone, address, startDate, Salary)
-values ('Shubham', 'M', 6465757686, 'Colony No:4, Ambala', '2021-03-10', 500000.0);
-insert into employee (name, gender, phone, address, startDate, Salary)
-values ('Durgesh', 'M', 968584746, 'Colony No:11, Nashik', '2021-03-12', 700000.0);
-insert into employee (name, gender, phone, address, startDate, Salary)
-values ('Julekha', 'F', 854635356, 'Colony No:20, Pune', '2021-04-22', 900000.0);
+insert into employee(name, gender, phone_number, address,startDate)
+values ('Shubham', 'M','989656565','Ambala','2021-01-10');
+insert into employee(name, gender, phone_number, address,startDate)
+values ('Karan', 'M','8686868686','Yamunanagar','2021-10-01');
+insert into employee(name, gender, phone_number, address,startDate)
+values ('Riya', 'F','9835464678','Patiala','2021-01-04');
+insert into employee(name, gender, phone_number, address,startDate)
+values ('Rashmi', 'F','6464646445','Delhi','2021-04-10');
+insert into payroll(basic_pay, deductions, income_tax, taxable_pay, tax, net_pay,emp_ID)
+values (400000,1000,500,5000,600,350000,1);
+insert into payroll(basic_pay, deductions, income_tax, taxable_pay, tax, net_pay,emp_ID)
+values (500000,2000,500,5000,600,450000,2);
+insert into payroll(basic_pay, deductions, income_tax, taxable_pay, tax, net_pay,emp_ID)
+values (600000,3000,500,5000,600,550000,3);
+insert into payroll(basic_pay, deductions, income_tax, taxable_pay, tax, net_pay,emp_ID)
+values (700000,4000,500,5000,600,650000,4);
 
-select * from employee where name = 'Shubham';
-select * from employee 
-where startDate between '2021-03-10' and Date(now());
-
-ALTER TABLE employee ADD Salary varchar(50);
-select sum(salary) from employee;
-select gender, sum(salary) from employee group by gender;
+insert into department(dept_name)
+values('Sales'),('Marketing');
+insert into department(dept_name)
+values('HR');
+select sum(basic_pay) from payroll;
+select gender, sum(basic_pay) from payroll join employee group by gender;
+select gender, avg(basic_pay) from payroll join employee group by gender ;
+select gender, max(basic_pay) from payroll join employee group by gender ;
+select gender, min(basic_pay) from payroll join employee group by gender ;
+select gender, count(*) from employee group by gender;
+insert into employee(name, gender, phone_number, address,startDate)
+values ('Terissa', 'F','9895689865','NY','2021-04-10');
+insert into payroll(basic_pay, deductions, income_tax, taxable_pay, tax, net_pay,emp_ID)
+values (300000,1000,500,5000,600,350000,5);
+insert into employee_department(employee_id,department_id)values(1,1);
+-- person belong to both department---
+select * from employee inner join payroll inner join 
+department ON employee.id = 5 and payroll.id =5 and department.id IN (1,2);
